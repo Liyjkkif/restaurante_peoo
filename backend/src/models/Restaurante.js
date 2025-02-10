@@ -1,8 +1,9 @@
-
 class Restaurante {
-    constructor(id, nome){
+    constructor(id, nome, endereco, telefone){
         this._id = id;
         this._nome = nome;
+        this.endereco = endereco;
+        this.telefone = telefone;
     }
 
     setId(id){
@@ -13,6 +14,14 @@ class Restaurante {
         this._nome = nome;
     }
 
+    setEndereco(endereco){
+        this.endereco = endereco
+    }
+
+    setTelefone(telefone){
+        this.telefone = telefone
+    }
+
     getId(){
         return this._id;
     }
@@ -20,7 +29,14 @@ class Restaurante {
     getNome(){
         return this._nome;
     }
+    
+    getEndereco(){
+        return this._endereco;
+    }
 
+    getTelefone(){
+        return this._telefone;
+    }
 }
 
 export default Restaurante;
