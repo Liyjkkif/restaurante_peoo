@@ -1,0 +1,189 @@
+/*Modelo da página*/
+body{
+    background-color: #381dfa;
+    color: white;
+    font-family: Courier New, monospace;
+}
+
+.menu{
+    background-color: rgb(243, 14, 14);
+}
+
+h1{
+    text-align: center;
+    margin: 10px;
+    font-size: 40px;
+    font-family: Courier New, monospace;
+    font-weight: bold;
+}
+
+h2{
+    text-align: center;
+    margin: 20px;
+    font-weight: bold;
+}
+
+h3{
+    margin-left: 20px;
+}
+
+input{
+    border-radius: 20px;
+}
+
+
+footer{
+    margin: 0 0 20px 20px;
+}
+
+/*Cardapio*/
+.Pratos{
+    background-color: white;
+    color: black;
+    margin: 0 40px 0px 40px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.Bebidas{
+    background-color: white;
+    color: black;
+    margin: 0 40px 0 40px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+/*Area do pedido*/
+.areaPedido{
+    margin: 0px 40px 0px 40px;
+    display: flex;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.escolha{
+    border-radius: 20px;
+    border: solid 1px black;
+    text-align: center;
+    width: 260px;
+    margin: 0 20px 20px 0;
+}
+
+.quantidade{
+    border-radius: 20px;
+    border: solid 1px black;
+    margin-right: 16px;
+    text-align: center;
+    width: 120px;
+}
+
+.comanda{
+    width: 120px;
+    height: 28px;
+    border-radius: 20px;
+    border: solid 1px black;
+    text-align: center;
+}
+
+.pagamento{
+    width: 210px;
+    height: 28px;
+    border-radius: 20px;
+    border: solid 1px black;
+    text-align: center;
+    margin-top: 20px;
+    margin-left: 30px;
+    padding: 5px;
+}
+
+.realizar{
+    margin: 20px 0 0 60px;
+    padding: 5px;
+    background-color: #2d1bc1;
+    border: solid 1px #2d1bc1;
+    color: white;
+    border-radius: 20px;
+}
+
+textarea{
+    border-radius: 20px;
+    border: solid 1px black;
+    padding: 10px;
+    text-align: center;
+    width: 480px;
+    height: 178px;
+}
+
+
+/*Lista de Pedidos*/
+.listaPedidos{
+    background-color: white;
+    color: black;
+    margin: 0 40px 0 40px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.status{
+    background-color: #2d1bc1;
+    padding: 5px;
+    color: white;
+    border-radius: 20px;
+}
+
+
+/*Configurações*/
+/*Adição de item no cardapio*/
+.edição{
+    background-color: white;
+    color: black;
+    margin: 0 40px 0 40px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.itemNome{
+    border: solid 1px black;
+}
+
+.itemPreço{
+    width: 80px;
+    border: solid 1px black;
+}
+
+.itemIngren{
+    width: 220px;
+    border: solid 1px black;
+}
+
+/*Cadastro de funcionario*/
+
+.cadastro{
+    background-color: white;
+    color: black;
+    margin: 0 40px 0 40px;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.função{
+    height: 30px;
+    border-radius: 20px;
+    border: solid 1px black;
+    margin-bottom: 10px;
+}
+
+.função2{
+    height: 30px;
+    border-radius: 20px;
+    border: solid 1px black;
+}
+
+.botão{
+    background-color: #2d1bc1;
+    border: solid 1px #2d1bc1;
+    color: white;
+    border-radius: 20px;
+    margin-top: 10px;
+}
