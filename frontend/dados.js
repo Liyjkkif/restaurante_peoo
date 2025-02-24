@@ -56,10 +56,10 @@ const renderPratos = () => {
           <textarea id="pratoIngredientes" class="form-control" required></textarea>
         </div>
         <div class="mb-3">
-          <label for="pratoPreco" class="form-label">Data de Vencimento</label>
-          <input type="date" id="pratoPreco" class="form-control" required>
+          <label for="pratoPreco" class="form-label">Preço Prato</label>
+          <input type="number" id="pratoPreco" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">Criar Prato</button>
+        <button type="submit" class="botão">Criar Prato</button>
       </form>
       <hr>
       <ul class="list-group">${pratoItems}</ul>
@@ -100,10 +100,10 @@ const renderBebidas = () => {
           <textarea id="bebidaIngredientes" class="form-control" required></textarea>
         </div>
         <div class="mb-3">
-          <label for="bebidaPreco" class="form-label">Data de Vencimento</label>
-          <input type="date" id="bebidaPreco" class="form-control" required>
+          <label for="bebidaPreco" class="form-label">Preço da Bebida</label>
+          <input type="number" id="bebidaPreco" class="form-control" required>
         </div>
-        <button type="submit" class="btn btn-primary">Criar Bebida</button>
+        <button type="submit" class="botão">Criar Bebida</button>
       </form>
       <hr>
       <ul class="list-group">${bebidaItems}</ul>

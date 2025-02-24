@@ -22,7 +22,7 @@
                   Menu
                 </button>
                 <ul class="dropdown-menu" style="background-color: #4328dc; ">
-                  <li><a class="dropdown-item" href="./index.html">Cardapio</a></li>
+                  <li><a class="dropdown-item" href="./index1.html">Cardapio</a></li>
                   <li><a class="dropdown-item" href="./index2.html">Pedidos</a></li>
                   <li><a class="dropdown-item" href="./index3.html">Configurações</a></li>
                 </ul>
@@ -35,20 +35,15 @@
       <hr>
       <h3>Edição do Cardapio</h3>
       <div class="edição">
-        <div>
-            Selecione o tipo de item a ser acrescentado no cardapio: <select name="" id="" class="função">
+        <div class="tipoItem">
+            Selecione o tipo de item a ser acrescentado no cardapio: <select name="" id="tipoItem" class="função" onchange="escolha()">
                 <option value="">tipo do item</option>
-                <option value="">Prato</option>
-                <option value="">Bebida</option>
+                <option value="Prato">Prato</option>
+                <option value="Bebida">Bebida</option>
             </select>
             <br>
-        Dados do item a ser acrescentado: 
-          <input type="text" placeholder="Nome" class="itemNome">
-          <input type="text" placeholder="Lista de Ingredientes" class="itemIngren">
-          <input type="number" name="" id="" placeholder="Preço" class="itemPreço" min="1">
+            <div class="conteudo"></div>
         </div>
-          
-          <button class="botão">Cadastrar</button>
       </div>
       <br>
 
@@ -63,13 +58,11 @@
               <option value="">Gerente</option>
           </select>
           <br>
-          Senha do Sistema: <input type="password" name="" id="" placeholder="Senha do Sistema" style="border: solid 1px black;">
+          Senha do Sistema: <input type="password" name="" id="novoFuncionario" placeholder="Senha do Sistema" style="border: solid 1px black;">
           <br>
           <button class="botão">Cadastrar</button>
       </div>
-  
-
-    
+      
     <hr>
     <footer><em>Sistema de Pedidos de um Restaurante</em></footer>
 

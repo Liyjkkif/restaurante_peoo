@@ -143,18 +143,8 @@ textarea{
     padding: 20px;
 }
 
-.itemNome{
-    border: solid 1px black;
-}
-
-.itemPreço{
-    width: 80px;
-    border: solid 1px black;
-}
-
-.itemIngren{
-    width: 220px;
-    border: solid 1px black;
+.tipoItem{
+    margin: 0px 20px 0px 20px;
 }
 
 /*Cadastro de funcionario*/
