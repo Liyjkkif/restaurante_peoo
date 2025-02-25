@@ -7,34 +7,63 @@ import {get, post} from './api.js';
 
 //Função para carregar os pratos e renderizá-los
 const loadPratos = async () => {
-    const Pratos = await get('http://localhost:5000/api/pratos');
-    state.pratos = Pratos;
+    const pratos = await get('http://localhost:5000/pratos');
+    state.pratos = pratos;
+    console.log(pratos);
     renderPratos();
 };
 
 //Função para carregar as bebidas e renderizá-las
 const loadBebidas = async () => {
-    const Bebidas = await get('http://localhost:5000/api/bebidas');
-    state.bebidas = Bebidas;
+    const bebidas = await get('http://localhost:5000/bebidas');
+    state.bebidas = bebidas;
     renderBebidas();
 };
+
+//Função para carregar os pedidos e renderizá-los
+const loadPedidos = async () => {
+  const pedidos = await get('http://localhost:5000/pedidos');
+  state.pedidos = pedidos;
+}
+
+//Função para carregar os funcionarios e renderiza-los
+const loadFuncionarios = async () => {
+  const funcionarios = await get('http://localhost:5000/pedidos');
+  state.funcionarios = funcionarios;
+}
 
 
 // Função para criar um novo prato
 const createPrato = async (prato) => {
-    await post('http://localhost:5000/api/pratos', prato);
+    await post('http://localhost:5000/pratos', prato);
     await loadPratos(); // Recarregar a lista de pratos
 };
 
 // Função para criar uma nova bebida
 const createBebida = async (bebida) => {
-    await post('http://localhost:5000/api/bebidas', bebida);
+    await post('http://localhost:5000/bebidas', bebida);
     await loadPratos(); // Recarregar a lista de bebidas
 };
+
+// Função para criar um pedido
+const createPedido = async (pedido) => {
+    await post('http://localhost:5000/pedidos', pedido);
+    await loadPedidos(); // Recarregar a lista de pedidos
+}
+
+// Função para criar um novo funcionario
+const createFuncionario = async (funcionario) => {
+    await post('http://localhost:5000/funcionarios', pedido);
+    await loadPedidos(); // Recarregar a lista de pedidos
+}
 
 
 // Função para renderizar a lista de pratos
 const renderPratos = () => {
+
+  document.getElementById("caixa-pratos").innerHTML = state.pratos[0]._ingredientes;
+
+  /*
     if (!state.pratos) return; // Verifica se state.pratos está definido
   
     const pratoItems = state.pratos.map(prato => `
@@ -74,7 +103,7 @@ const renderPratos = () => {
         preco: document.getElementById('pratoPreco').value
       };
       await createPrato(newPrato);
-    });
+    });*/
   };
 
 // Função para renderizar a lista de bebidas

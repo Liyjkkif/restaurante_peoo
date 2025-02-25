@@ -1,4 +1,4 @@
-import Bebida from "../models/Bebida";
+import Bebida from "../models/Bebida.js";
 import connection from "../config/dbConnect.js";
 
 const BebidaRepository = {

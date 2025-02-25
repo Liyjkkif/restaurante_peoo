@@ -6,4 +6,4 @@ const FuncionarioRouters = express.Router();
 FuncionarioRouters.get("/", FuncionarioController.getAll);
 FuncionarioRouters.post("/", FuncionarioController.create);
 
-export default Funcionario.Routers;
+export default FuncionarioRouters;

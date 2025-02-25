@@ -1,4 +1,4 @@
-import Prato from "../models/Prato";
+import Prato from "../models/Prato.js";
 import connection from "../config/dbConnect.js";
 
 const PratoRepository = {
