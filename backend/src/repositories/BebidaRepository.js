@@ -5,12 +5,12 @@ const BebidaRepository = {
 
     async findAll() {
         const rows = await connection.query("select * from bebidas", []);
-        return rows.map(row => new Bebida(row.id, row.nome));
+        return rows.map(row => new Bebida(row.id, row.nome, row.ingredientes, row.preco));
     },
 
     async createProject(bebida){
-        const result = await connection.query("insert into bebidas (nome) values (?)",
-            [bebida.nome]
+        const result = await connection.query("insert into bebidas (nome, ingredientes, preco) values (?, ?, ?)",
+            [bebida.nome, bebida.ingredientes, bebida.preco]
         );
         bebida.id = result.insertId;
         return bebida;
