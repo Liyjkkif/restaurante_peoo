@@ -24,15 +24,17 @@ const loadBebidas = async () => {
 const loadPedidos = async () => {
   const pedidos = await get('http://localhost:5000/pedidos');
   state.pedidos = pedidos;
+  renderPedidos();
 }
 
 //Função para carregar os funcionarios e renderiza-los
 const loadFuncionarios = async () => {
   const funcionarios = await get('http://localhost:5000/pedidos');
   state.funcionarios = funcionarios;
+  renderFuncionarios();
 }
 
-
+//Por enquanto não será utilizado as funções de criação. mas pode ser necessario futuramente
 // Função para criar um novo prato
 const createPrato = async (prato) => {
     await post('http://localhost:5000/pratos', prato);
@@ -61,8 +63,17 @@ const createFuncionario = async (funcionario) => {
 // Função para renderizar a lista de pratos
 const renderPratos = () => {
 
-  document.getElementById("caixa-pratos").innerHTML = state.pratos[0]._ingredientes;
+  //document.getElementById("caixa-pratos").innerHTML = state.pratos[0]._ingredientes;
+  let valo = `Prato: ${state.pratos[0]._nome} 
+  <br> 
+  Ingredientes: ${state.pratos[0]._nome} 
+  <br>
+  Preço: ${state.pratos[0]._nome} `
 
+  document.getElementById("caixa-pratos").innerHTML = valo;
+
+  //CRIAR NOME TABELA COM COLUNAS NOME, INGREDIENTES E PREÇO PARA pRATOS E BEBIDAS
+  
   /*
     if (!state.pratos) return; // Verifica se state.pratos está definido
   
@@ -108,7 +119,16 @@ const renderPratos = () => {
 
 // Função para renderizar a lista de bebidas
 const renderBebidas = () => {
-    if (!state.bebidas) return; // Verifica se state.bebidas está definido
+  let valo = `<strong>Prato:</strong> ${state.pratos[0]._nome} 
+  <br> 
+  <strong>Ingredientes:</strong> ${state.pratos[0]._nome} 
+  <br>
+  <strong>Preço:</strong> ${state.pratos[0]._nome} `
+
+  document.getElementById("caixa-bebidas").innerHTML = valo;
+
+
+    /*if (!state.bebidas) return; // Verifica se state.bebidas está definido
 
     const bebidaItems = state.bebidas.map(bebida => `
       <li class="list-group-item">
@@ -147,7 +167,15 @@ const renderBebidas = () => {
         preco: document.getElementById('bebidaPreco').value
       };
       await createBebida(newBebida);
-    });
+    });*/
   };
 
-export { loadPratos, loadBebidas };
+  const renderPedidos = () => {
+    //document.getElementById("caixa-bebidas").innerHTML = state.bebidas[0]._ingredientes;
+  }
+
+  const renderFuncionarios = () => {
+    //document.getElementById("caixa-bebidas").innerHTML = state.bebidas[0]._ingredientes;
+  }
+
+export { loadPratos, loadBebidas , loadPedidos, loadFuncionarios};
