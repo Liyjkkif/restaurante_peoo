@@ -5,12 +5,12 @@ const CardapioRepository = {
 
     async findAll() {
         const rows = await connection.query("select * from cardapios", []);
-        return rows.map(row => new Cardapio(row.id, row.nome));
+        return rows.map(row => new Cardapio(row.id, row.pratos_id, row.bebidas_id));
     },
 
     async createProject(cardapio){
-        const result = await connection.query("insert into cardapios (nome) values (?)",
-            [cardapio.nome]
+        const result = await connection.query("insert into cardapios (pratos_id, bebidas_id) values (?, ?)",
+            [cardapio.pratos_id, cardapio.bebidas_id]
         );
         cardapio.id = result.insertId;
         return cardapio;
