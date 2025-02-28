@@ -1,8 +1,7 @@
-import {loadPratos} from './dados.js'
+import {loadPratos, loadBebidas, loadPedidos, loadFuncionarios} from './dados.js'
 
 
-let fala = document.addEventListener('DOMContentLoaded', loadPratos);
-
-console.log(fala)
-
-
+document.addEventListener('DOMContentLoaded', loadPratos);
+document.addEventListener('DOMContentLoaded', loadBebidas);
+document.addEventListener('DOMContentLoaded', loadPedidos);
+document.addEventListener('DOMContentLoaded', loadFuncionarios);
