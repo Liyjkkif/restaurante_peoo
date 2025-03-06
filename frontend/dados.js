@@ -29,7 +29,7 @@ const loadPedidos = async () => {
 
 //Função para carregar os funcionarios e renderiza-los
 const loadFuncionarios = async () => {
-  const funcionarios = await get('http://localhost:5000/pedidos');
+  const funcionarios = await get('http://localhost:5000/funcionarios');
   state.funcionarios = funcionarios;
   renderFuncionarios();
 }
@@ -55,127 +55,203 @@ const createPedido = async (pedido) => {
 
 // Função para criar um novo funcionario
 const createFuncionario = async (funcionario) => {
-    await post('http://localhost:5000/funcionarios', pedido);
+    await post('http://localhost:5000/funcionarios', funcionario);
     await loadPedidos(); // Recarregar a lista de pedidos
 }
 
 
 // Função para renderizar a lista de pratos
 const renderPratos = () => {
+  let tabela = `<table class="table caption-top">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">NOME</th>
+              <th scope="col">INGREDIENTES</th>
+              <th scope="col">PREÇO</th>
+            </tr>
+          </thead>
+          <tbody>`
+    
+    let linhas = ``
+    
+    for(let x = 0; x<state.pratos.length; x++){
+      let novaLinha = `<tr>
+              <th scope="row">${state.pratos[x]._id}</th>
+              <td>${state.pratos[x]._nome}</td>
+              <td>${state.pratos[x]._ingredientes}</td>
+              <td>R$ ${state.pratos[x]._preco}.00</td>
+            </tr>`
+      linhas = linhas+novaLinha
+    }
 
-  //document.getElementById("caixa-pratos").innerHTML = state.pratos[0]._ingredientes;
-  let valo = `Prato: ${state.pratos[0]._nome} 
-  <br> 
-  Ingredientes: ${state.pratos[0]._nome} 
-  <br>
-  Preço: ${state.pratos[0]._nome} `
+    tabela = tabela+linhas+`</tbody>
+        </table>`
 
-  document.getElementById("caixa-pratos").innerHTML = valo;
-
-  //CRIAR NOME TABELA COM COLUNAS NOME, INGREDIENTES E PREÇO PARA pRATOS E BEBIDAS
-  
-  /*
-    if (!state.pratos) return; // Verifica se state.pratos está definido
-  
-    const pratoItems = state.pratos.map(prato => `
-      <li class="list-group-item">
-        <strong>${prato.nome}</strong> - ${prato.ingredientes}
-        <span class="badge bg-secondary">${prato.preco}</span>
-      </li>
-    `).join('');
-  
-    const content = `
-      <h2>Pratos</h2>  
-      <form id="pratoForm">
-        <div class="mb-3">
-          <label for="pratoNome" class="form-label">Título</label>
-          <input type="text" id="pratoNome" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label for="pratoIngredientes" class="form-label">Descrição</label>
-          <textarea id="pratoIngredientes" class="form-control" required></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="pratoPreco" class="form-label">Preço Prato</label>
-          <input type="number" id="pratoPreco" class="form-control" required>
-        </div>
-        <button type="submit" class="botão">Criar Prato</button>
-      </form>
-      <hr>
-      <ul class="list-group">${pratoItems}</ul>
-    `;
-    document.getElementById('app-content').innerHTML = content;
-  
-    document.getElementById('pratoForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const newPrato = {
-        nome: document.getElementById('pratoNome').value,
-        ingredientes: document.getElementById('pratoIngredientes').value,
-        preco: document.getElementById('pratoPreco').value
-      };
-      await createPrato(newPrato);
-    });*/
+  document.getElementById("caixa-pratos").innerHTML = tabela;
   };
+
 
 // Função para renderizar a lista de bebidas
 const renderBebidas = () => {
-  let valo = `<strong>Prato:</strong> ${state.pratos[0]._nome} 
-  <br> 
-  <strong>Ingredientes:</strong> ${state.pratos[0]._nome} 
-  <br>
-  <strong>Preço:</strong> ${state.pratos[0]._nome} `
+  let tabela = `<table class="table caption-top">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">NOME</th>
+              <th scope="col">INGREDIENTES</th>
+              <th scope="col">PREÇO</th>
+            </tr>
+          </thead>
+          <tbody>`
+    
+    let linhas = ``
+    
+    for(let x = 0; x<state.bebidas.length; x++){
+      let novaLinha = `<tr>
+              <th scope="row">${state.bebidas[x]._id}</th>
+              <td>${state.bebidas[x]._nome}</td>
+              <td>${state.bebidas[x]._ingredientes}</td>
+              <td>R$ ${state.bebidas[x]._preco}.00</td>
+            </tr>`
+      linhas = linhas+novaLinha
+    }
 
-  document.getElementById("caixa-bebidas").innerHTML = valo;
+    tabela = tabela+linhas+`</tbody>
+        </table>`
 
-
-    /*if (!state.bebidas) return; // Verifica se state.bebidas está definido
-
-    const bebidaItems = state.bebidas.map(bebida => `
-      <li class="list-group-item">
-        <strong>${bebida.nome}</strong> - ${bebida.ingredientes}
-        <span class="badge bg-secondary">${bebida.preco}</span>
-      </li>
-    `).join('');
-  
-    const content = `
-      <h2>Bebidas</h2>  
-      <form id="bebidaForm">
-        <div class="mb-3">
-          <label for="bebidaNome" class="form-label">Título</label>
-          <input type="text" id="bebidaNome" class="form-control" required>
-        </div>
-        <div class="mb-3">
-          <label for="bebidaIngredientes" class="form-label">Descrição</label>
-          <textarea id="bebidaIngredientes" class="form-control" required></textarea>
-        </div>
-        <div class="mb-3">
-          <label for="bebidaPreco" class="form-label">Preço da Bebida</label>
-          <input type="number" id="bebidaPreco" class="form-control" required>
-        </div>
-        <button type="submit" class="botão">Criar Bebida</button>
-      </form>
-      <hr>
-      <ul class="list-group">${bebidaItems}</ul>
-    `;
-    document.getElementById('app-content').innerHTML = content;
-  
-    document.getElementById('bebidaForm').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const newBebida = {
-        nome: document.getElementById('bebidaNome').value,
-        ingredientes: document.getElementById('bebidaIngredientes').value,
-        preco: document.getElementById('bebidaPreco').value
-      };
-      await createBebida(newBebida);
-    });*/
+  document.getElementById("caixa-bebidas").innerHTML = tabela;
   };
 
+
   const renderPedidos = () => {
-    //document.getElementById("caixa-bebidas").innerHTML = state.bebidas[0]._ingredientes;
+    let dado1 = `
+      <div class="areaItens">
+      <div class="itensPrato">
+      <legend>Pratos</legend>`
+        let opcoes1 = ``
+        for(let x = 0; x<state.pratos.length; x++){
+          let item = `<input type="checkbox" id="prato_${state.pratos[x]._id}" value="${state.pratos[x]._nome}"/>
+          <label for="prato_${state.pratos[x]._id}">${state.pratos[x]._nome}</label>
+          <br>`;
+            opcoes1 = opcoes1+item;
+        }
+        dado1 = dado1+opcoes1+`</div>`
+    
+    let dado2 = `<div class="itensBebida">
+      <legend>Bebidas</legend>`
+      let opcoes2 = ``
+      for(let y = 0; y<state.bebidas.length; y++){
+        let item = `<input type="checkbox" id="bebida_${state.bebidas[y]._id}" value="${state.bebidas[y]._nome}"/>
+        <label for="bebida_${state.bebidas[y]._id}">${state.bebidas[y]._nome}</label>
+        <br>`;
+          opcoes2 = opcoes2+item;
+        }
+        dado2 = dado2+opcoes2+`</div>`
+    
+      let dado3 = `<div class="areaInput">
+        <div class="areaRealizar">
+          <input type="text" placeholder="Titular" id="titular" class="nomeCadastro">
+          <select id="comanda" class="funcaoCadastro">
+            <option value="">Comanda</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+          </select>
+              <br>
+            <button class="botaoCadastro" onclick="alertar()">Realizar Pedido</button>
+          </div>
+          <textarea name="anotacao" id="anotacao" cols="30" rows="10" placeholder="Anotações dos Pedidos"></textarea> 
+            </div>`
+    
+        let valor = dado1+dado2+`</div><br>`+dado3+`<br></div>`
+       
+      
+        let tabela = `<table>
+        <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">DATA E HORA</th>
+              <th scope="col">TITULAR</th>
+              <th scope="col">COMANDA</th>
+              <th scope="col">PEDIDO</th>
+              <th scope="col">QUANTIDADE</th>
+              <th scope="col">ANOTAÇÃO</th>
+              <th scope="col">SITUAÇÃO</th>
+            </tr>
+          </thead>
+          <tbody>`;
+
+        let linhas = ``;
+        for(let x = 0; x<state.pedidos.length; x++){
+          linhas += `<tr>
+              <th scope="row">${state.pedidos[x]._id_pedido}</th>
+              <td>${state.pedidos[x]._data_hora}</td>
+              <td>${state.pedidos[x]._comanda}</td>
+              <td>${state.pedidos[x]._titular}</td>
+              <td>${state.pedidos[x]._pedido}</td>
+              <td>${state.pedidos[x]._quantidade}</td>
+              <td>${state.pedidos[x]._anotacao}</td>
+              <td>${state.pedidos[x]._situacao}</td>
+            </tr>`;
+        }
+
+        tabela = tabela+linhas+`</tbody>
+          </table>`
+
+      
+    let pagina = document.getElementById('titulo').textContent;
+    switch(pagina){
+      case "- Cardapio -":
+        document.getElementById('caixa-pedido').innerHTML = valor;
+        break;
+      case "- Pedidos -":
+        document.getElementById('caixa-pedido').innerHTML = tabela;
+        break;
+    }
+    
+
+    /*let itensEscolhidos = ``
+    for(let p = 0; p<state.pratos.length; p++){
+      let PRATO = document.getElementById(`prato_${state.pratos[p]._id}`).value;
+      if(PRATO.checked){
+        itensEscolhidos += state.pratos[p]._nome;
+      }
+    }*/
   }
 
   const renderFuncionarios = () => {
-    //document.getElementById("caixa-bebidas").innerHTML = state.bebidas[0]._ingredientes;
+    let tabela = `<table class="table caption-top">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">NOME</th>
+              <th scope="col">FUNÇÃO</th>
+            </tr>
+          </thead>
+          <tbody>`;
+
+    let linhas = ``;
+    for(let x = 0; x<state.funcionarios.length; x++){
+      linhas += `<tr>
+              <th scope="row">${state.funcionarios[x]._id}</th>
+              <td>${state.funcionarios[x]._nome}</td>
+              <td>${state.funcionarios[x]._funcao}</td></tr>`
+    }
+
+    tabela = tabela+linhas+`</tbody>
+    </table>`
+
+
+  document.getElementById('caixa-funcionario').innerHTML = tabela;
+
   }
 
 export { loadPratos, loadBebidas , loadPedidos, loadFuncionarios};
