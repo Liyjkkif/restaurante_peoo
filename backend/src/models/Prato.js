@@ -1,12 +1,17 @@
 class Prato {
-    constructor(id, ingredientes, preco){
+    constructor(id, nome, ingredientes, preco){
         this._id = id;
+        this._nome = nome;
         this._ingredientes = ingredientes;
         this._preco = preco;
     }
 
     setId(id){
         this._id = id;
+    }
+
+    setNome(nome){
+        this._nome = nome;
     }
 
     setIngredientes(ingredientes){
@@ -19,6 +24,10 @@ class Prato {
 
     getId(){
         return this._id;
+    }
+
+    setNome(){
+        return this._nome;
     }
 
     getIngredientes(){
