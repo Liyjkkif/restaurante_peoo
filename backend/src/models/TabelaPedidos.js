@@ -1,10 +1,15 @@
 class TabelaPedidos {
-    constructor(id_pedido, data_hora, situacao, quantidade, anotacao) {
+    constructor(id_pedido, data_hora, comanda, titular, pedido, quantidade, anotacao, situacao) {
         this._id_pedido = id_pedido;
         this._data_hora = data_hora;
-        this._situacao = situacao;
+        this._comanda = comanda;
+        this._titular = titular;
+        this._pedido = pedido;
         this._quantidade = quantidade;
         this._anotacao = anotacao;
+        this._situacao = situacao;
+        
+        
     }
 
     setIdPedido(id_pedido) {
@@ -15,8 +20,16 @@ class TabelaPedidos {
         this._data_hora = data_hora;
     }
 
-    setSituacao(situacao) {
-        this._situacao = situacao;
+    setComanda(comanda){
+        this._comanda = comanda;
+    }
+
+    setTitular(titular){
+        this._titular = titular;
+    }
+
+    setPedido(pedido){
+        this._pedido = pedido;
     }
 
     setQuantidade(quantidade) {
@@ -27,6 +40,10 @@ class TabelaPedidos {
         this._anotacao = anotacao;
     }
 
+    setSituacao(situacao) {
+        this._situacao = situacao;
+    }
+
     getIdPedido() {
         return this._id_pedido;
     }
@@ -35,8 +52,16 @@ class TabelaPedidos {
         return this._data_hora;
     }
 
-    getSituacao() {
-        return this._situacao;
+    getComanda(){
+        return this._comanda;
+    }
+
+    getTitular(){
+        return this._titular;
+    }
+
+    getPedido(){
+        return this._pedido;
     }
 
     getQuantidade() {
@@ -46,6 +71,11 @@ class TabelaPedidos {
     getAnotacao() {
         return this._anotacao;
     }
+
+    getSituacao(){
+        return this._situacao;
+    }
+
 }
 
 export default TabelaPedidos;
