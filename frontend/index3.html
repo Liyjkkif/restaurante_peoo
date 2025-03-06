@@ -33,41 +33,80 @@
       </nav>
       <h2>- Configurações -</h2>
       <hr>
-      <h3>Edição do Cardapio</h3>
-      <div class="edição">
-        <!--
-        <div class="tipoItem">
-            Selecione o tipo de item a ser acrescentado no cardapio: <select name="" id="tipoItem" class="função" onchange="escolha()">
-                <option value="">tipo do item</option>
-                <option value="Prato">Prato</option>
-                <option value="Bebida">Bebida</option>
-            </select>
-            <br>
-            <div class="conteudo"></div>
-        </div> -->
-      </div>
-      <br>
-
+      
       <h3>Cadastro Funcionario</h3>
-      <div class="cadastro">
-        <!--
-          Nome do Funcionario: <input type="text" placeholder="Nome do funcionario" style="margin-bottom: 10px; border: solid 1px black;">
-          <br>
-          Função do funcionario: <select name="" id="" class="função2" style="margin-bottom: 10px;">
-              <option value="">Função</option>
-              <option value="">Garçom</option>
-              <option value="">Cozinheiro</option>
-              <option value="">Gerente</option>
+        <div class="cadastroFuncionario">
+          <h3>Dados</h3>
+          <div class="bordaDados">
+          Nome: <input type="text" placeholder="Minimo 10 caracteres" id="nomeFuncionario" class="nomeCadastro">
+            <br>
+          Função: <select id="funcaoFuncionario" class="funcaoCadastro">
+            <option value="">Selecione função</option>
+            <option value="Cozinheiro">Cozinheiro</option>
+            <option value="Gerente">Gerente</option>
+            <option value="Garçom">Garçom</option>
           </select>
+            <br>
+          Senha do sistema: <input type="password" placeholder="Minimo 8 caracteres" id="senhaFuncionario" class="senhaCadastro">
+          <hr>  
+
+          <p>Somente o gerente tem permissão para realizar cadastro de funcionarios</p>
+          Gerente: <input type="text" placeholder="Minimo 10 caracteres" class="nomeCadastro">
+            <br>
+          Senha: <input type="password" placeholder="Minimo 8 caracteres" class="senhaCadastro">
+            <br>
+          <button class="botaoCadastro" onclick="cadastroFuncionario()">Cadastrar novo funcionario</button>
+          </div>
           <br>
-          Senha do Sistema: <input type="password" name="" id="novoFuncionario" placeholder="Senha do Sistema" style="border: solid 1px black;">
-          <br>
-          <button class="botão">Cadastrar</button>-->
+          
+            <h3>Lista de Funcionarios</h3>
+            <div class="bordaTabela">
+          <span id="caixa-funcionario"></span></div>
+        </div>
+        <br>
+
+      <h3>Cadastro de itens no Cardapio</h3>
+      <div class="cadastroFuncionario">
+        <h3>Dados</h3>
+        <div class="bordaDados">
+      Acrencentar item no Cardapio: <select class="funcaoCadastro">
+        <option value="">Tipo de item</option>
+        <option value="prato">Prato</option>
+        <option value="bebida">Bebida</option>
+      </select>
+        <br>
+      Nome: <input type="text" placeholder="Nome do Item" class="nomeCadastro">
+        <br>
+      Ingredientes: <input type="text" placeholder="Ingredientes do Item" class="nomeCadastro">
+        <br>
+      Preço: <input type="number" placeholder="Preço do Item" class="nomeCadastro">
+      <br>
+      <button class="botaoCadastro">Criar item no Cardapio</button>
+    
+      <hr>
+  
+      <p>Somente o Gerente e Cozinheiros podem Acrencentar item no Cardapio</p>
+      Nome: <input type="text" placeholder="Nome" class="nomeCadastro">
+      Senha: <input type="password" placeholder="Senha" class="nomeCadastro">
+    </div>
+    <br>
+      
+
+        <h3>Pratos</h3>
+        <div class="bordaTabela">
+        <span id="caixa-pratos"></span>
+        </div>
+        <br>
+        <h3>Bebidas</h3>
+        <div class="bordaTabela">
+        <span id="caixa-bebidas"></span>
+      </div>
       </div>
       
     <hr>
     <footer><em>Sistema de Pedidos de um Restaurante</em></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="carregar3.js" type="module"></script>
 </body>
 </html>
