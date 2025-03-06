@@ -24,11 +24,7 @@ h2{
 }
 
 h3{
-    margin-left: 20px;
-}
-
-input{
-    border-radius: 20px;
+    text-align: center;
 }
 
 
@@ -36,74 +32,78 @@ footer{
     margin: 0 0 20px 20px;
 }
 
+.input{
+    width: 80px;
+    height: 20px;
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+
 /*Cardapio*/
 .Pratos{
     background-color: white;
+    border: solid 3px lightblue;
     color: black;
-    margin: 0 40px 0px 40px;
+    margin: 0 30px 40px 30px;
     border-radius: 20px;
     padding: 20px;
 }
 
 .Bebidas{
     background-color: white;
+    border: solid 3px lightblue;
     color: black;
-    margin: 0 40px 0 40px;
+    margin: 0 30px 40px 30px;
     border-radius: 20px;
     padding: 20px;
 }
+
 
 /*Area do pedido*/
 .areaPedido{
-    margin: 0px 40px 0px 40px;
-    display: flex;
+    margin: 0px 30px 0px 30px;
     background-color: white;
+    color: black;
     border-radius: 20px;
+    border: solid 3px lightblue;
     padding: 20px;
+    display: block;
 }
 
-.escolha{
-    border-radius: 20px;
-    border: solid 1px black;
-    text-align: center;
-    width: 260px;
-    margin: 0 20px 20px 0;
+.areaItens{
+    border: solid 1px lightgray;
+    border-radius: 10px;
+    padding: 20px 20px 20px 20px;
+    display: flex;
 }
 
-.quantidade{
-    border-radius: 20px;
-    border: solid 1px black;
-    margin-right: 16px;
-    text-align: center;
-    width: 120px;
+.itensPrato{
+   margin: 0px 20px 0px 10px;
+   font-size: 15px;
 }
 
-.comanda{
-    width: 120px;
-    height: 28px;
-    border-radius: 20px;
-    border: solid 1px black;
-    text-align: center;
+.itensBebida{
+    margin: 0px 20px 0px 10px;
+    font-size: 15px;
 }
 
-.pagamento{
-    width: 210px;
-    height: 28px;
-    border-radius: 20px;
-    border: solid 1px black;
-    text-align: center;
-    margin-top: 20px;
-    margin-left: 30px;
-    padding: 5px;
+
+.areaInput{
+    border: solid 1px lightgray;
+    border-radius: 10px;
+    padding: 20px 20px 20px 20px;
+    display: flex;
 }
 
-.realizar{
-    margin: 20px 0 0 60px;
-    padding: 5px;
-    background-color: #2d1bc1;
-    border: solid 1px #2d1bc1;
-    color: white;
-    border-radius: 20px;
+.areaRealizar{
+    border-radius: 10px;
+}
+
+.areaEscolha{
+    border: solid 2px black;
+    margin-left: 20px;
+    width: 200px;
 }
 
 textarea{
@@ -111,8 +111,9 @@ textarea{
     border: solid 1px black;
     padding: 10px;
     text-align: center;
-    width: 480px;
+    width: 300px;
     height: 178px;
+    margin-left: 20px;
 }
 
 
@@ -121,6 +122,7 @@ textarea{
     background-color: white;
     color: black;
     margin: 0 40px 0 40px;
+    border: solid 3px lightblue;
     border-radius: 20px;
     padding: 20px;
 }
@@ -134,46 +136,64 @@ textarea{
 
 
 /*Configurações*/
-/*Adição de item no cardapio*/
-.edição{
-    background-color: white;
-    color: black;
-    margin: 0 40px 0 40px;
-    border-radius: 20px;
-    padding: 20px;
+/*Cadastro de itens no Cardapio*/
+.bordaTabela{
+    border: solid 1px lightgray;
+    border-radius: 10px;
+    padding: 3px;
 }
 
-.tipoItem{
-    margin: 0px 20px 0px 20px;
+.bordaDados{
+    border: solid 1px lightgray;
+    border-radius: 10px;
+    padding: 20px 20px 10px 20px;
 }
 
 /*Cadastro de funcionario*/
-
-.cadastro{
+.Funcionarios{
     background-color: white;
     color: black;
-    margin: 0 40px 0 40px;
+    margin: 0 30px 0 30px;
+    border: solid 3px lightblue;
     border-radius: 20px;
     padding: 20px;
 }
 
-.função{
-    height: 30px;
+.cadastroFuncionario{
+    background-color: white;
+    color: black;
+    margin: 0 30px 0 30px;
+    border: solid 3px lightblue;
     border-radius: 20px;
-    border: solid 1px black;
+    padding: 20px;
+}
+
+.nomeCadastro{
+    width: 210px;
+    border-radius: 10px;
     margin-bottom: 10px;
+    text-align: center;
 }
 
-.função2{
-    height: 30px;
-    border-radius: 20px;
-    border: solid 1px black;
+.funcaoCadastro{
+    width: 180px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align: center;
 }
 
-.botão{
-    background-color: #2d1bc1;
-    border: solid 1px #2d1bc1;
+.senhaCadastro{
+    width: 200px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.botaoCadastro{
+    border-radius: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #4c2bfc;
+    border: solid 2px #4c2bfc;
     color: white;
-    border-radius: 20px;
-    margin-top: 10px;
 }
