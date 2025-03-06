@@ -21,8 +21,8 @@
                 <button class="btn dropdown-toggle"  style="background-color: #2d1bc1; color: white;" data-bs-toggle="dropdown" aria-expanded="false">
                   Menu
                 </button>
-                <ul class="dropdown-menu" style="background-color: #4328dc; color: white;">
-                  <li><a class="dropdown-item" href="./index1.html" onclick="">Cardapio</a></li>
+                <ul class="dropdown-menu" style="background-color: #2d1bc1; color: white;">
+                  <li><a class="dropdown-item" href="./index1.html">Cardapio</a></li>
                   <li><a class="dropdown-item" href="./index2.html">Pedidos</a></li>
                   <li><a class="dropdown-item" href="./index3.html">Configurações</a></li>
                 </ul>
@@ -31,51 +31,36 @@
           </div>
         </div>
       </nav>
-      <h2>- Cardapio -</h2>
+      
+      <h2><span id="titulo">- Cardapio -</span></h2>
+      
       <hr>
-  
-      <h3>Pratos</h3>
-          <div class="Pratos">
-            <span id="caixa-pratos"></span>
-          </div>
-      <h3>Bebidas</h3>
-          <div class="Bebidas">
-            <span id="caixa-bebidas"></span>
-          </div>
-          <br>
-      <h3>Realizar Pedido</h3>
-  
-      <div class="areaPedido">
-        <span id="caixa-pedidos"></span>
-          <!--<div>
-              <input type="text" placeholder="Pedido" class="escolha"> 
-              <br>
-              <input type="number" placeholder="Quantidade" min="1" max="1000" class="quantidade">
-              <select name="" id="" class="comanda">
-                  <option value="">Comanda</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
-                  <option value="">4</option>
-              </select>
-              <br>
-              <select name="" id="" class="pagamento">
-                  <option value="">Forma de Pagamento</option>
-                  <option value="">2</option>
-                  <option value="">3</option>
-                  <option value="">4</option>
-              </select>
-              <br>
-              <button class="realizar">Realizar Pedido</button>
-          </div>
-          <textarea name="" id="" cols="30" rows="10" placeholder="Anotações dos Pedidos"></textarea>-->
-      </div>
-  
 
-    
+      <h3>Pratos</h3>
+        <div class="Pratos">
+          <span id="caixa-pratos"></span>
+        </div>
+      
+      <h3>Bebidas</h3>
+        <div class="Bebidas">
+          <span id="caixa-bebidas"></span>
+        </div>
+     
+      <h3>Realizar pedido</h3>
+        <div class="areaPedido">
+          <div class="areaDados">
+            <span id="caixa-pedido"></span>
+          </div>
+            <span id="valor">AREA DESTINADA AOS ITENS ESCOLHIDOS</span>
+          </div>
+        </div>
+  
+  
+     
     <hr>
     <footer><em>Sistema de Pedidos de um Restaurante</em></footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="carregar.js" type="module"></script>
+    <script src="carregar1.js" type="module"></script>
 </body>
 </html>
