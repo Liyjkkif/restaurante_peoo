@@ -3,7 +3,6 @@ dotenv.config();
 
 import app from "./src/app.js";
 import connection from "./src/config/dbConnect.js";
-import PedidoRouters from "./src/routers/PedidoRouters.js";
 import RestauranteRouters from "./src/routers/RestauranteRouters.js";
 import PratoRouters from "./src/routers/PratoRouter.js";
 import BebidaRouters from "./src/routers/BebidaRouters.js";
@@ -18,7 +17,6 @@ app.use("/pratos", PratoRouters);
 app.use("/bebidas", BebidaRouters);
 app.use("/cardapio", CardapioRouters);
 app.use("/funcionarios", FuncionarioRouters);
-app.use("/pedidos", PedidoRouters);
 app.use("/tabelapedidos", TabelaPedidosRouters);
 
 app.listen(PORT, () => {
