@@ -1,7 +1,8 @@
 class Funcionario {
-    constructor(id, nome, funcao, senha_sistema){
+    constructor(id, nome, funcao, email, senha_sistema){
         this._id = id;
         this._nome = nome;
+        this._email = email;
         this._funcao = funcao;
         this.senha_sistema = senha_sistema;
     }
@@ -18,6 +19,10 @@ class Funcionario {
         this._funcao = funcao;
     }
 
+    setEmail(email){
+        this._email = email;
+    }
+
     getId(){
         return this._id;
     }
@@ -27,7 +32,11 @@ class Funcionario {
     }
 
     getFuncao(){
-        return this.funcao;
+        return this._funcao;
+    }
+
+    getEmail(){
+        return this._email;
     }
 
     
