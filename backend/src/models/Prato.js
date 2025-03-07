@@ -26,7 +26,7 @@ class Prato {
         return this._id;
     }
 
-    setNome(){
+    getNome(){
         return this._nome;
     }
 
