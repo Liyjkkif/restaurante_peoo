@@ -1,4 +1,3 @@
--- Criação da Tabela pedidos
 CREATE TABLE pedido(
     id_pedido INT AUTO_INCREMENT PRIMARY KEY,
     data_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -11,3 +10,4 @@ CREATE TABLE pedido(
 );
 
 insert into pedido (titular, comanda, pedido, quantidade, anotação) VALUES ( 'César', '01','Suco de Abacaxi com Hortelã', 1, 'Sem açúcar');
+insert into pedido (titular, comanda, pedido, quantidade, anotação) values ('Breno','10','Risoto de Camarão', 2, '');
