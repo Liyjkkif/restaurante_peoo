@@ -9,12 +9,13 @@ const RestauranteRepository = {
     },
 
     async createProject(restaurante){
-        const result = await connection.query("insert into restaurantes (nome, endereco, telefone) values (?, ?, ?)",
-            [restaurante.nome, restaurante.endereco, restaurante.telefone]
+        const result = await connection.query("insert into restaurante (nome, endereco, telefone) values (?, ?, ?)",
+            [restaurante.getNome(), restaurante.getEndereco(), restaurante.getTelefone()]
         );
-        restaurante.id = result.insertId;
+        restaurante.getId(result.insertId);
         return restaurante;
     }
 }
 
 export default RestauranteRepository;
+
