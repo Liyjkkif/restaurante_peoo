@@ -12,7 +12,7 @@ const CardapioRepository = {
         const result = await connection.query("insert into cardapios (pratos_id, bebidas_id) values (?, ?)",
             [cardapio.pratos_id, cardapio.bebidas_id]
         );
-        cardapio.id = result.insertId;
+        cardapio.getId(result.insertId);
         return cardapio;
     }
 }
