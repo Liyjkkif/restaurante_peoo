@@ -1,21 +1,21 @@
-import TabelaPedidos from "../models/TabelaPedidos.js";
+import Bebida from "../models/Bebida.js";
 import connection from "../config/dbConnect.js";
 
-const TabelaPedidosRepository = {
+const BebidaRepository = {
 
     async findAll() {
-        const rows = await connection.query("select * from pedido", []);
-        return rows.map(row => new TabelaPedidos(row.id_pedido, row.data_hora, row.comanda, row.titular, row.pedido, row.quantidade,  row.anotação, row.situação));
+        const rows = await connection.query("select * from bebidas", []);
+        return rows.map(row => new Bebida(row.id, row.nome, row.ingredientes, row.preco));
     },
 
-    async createTabelaPedido(tabelaPedido) {
+    async createTabelaPedido(bebida) {
         const result = await connection.query(
-            "insert into pedido (data_hora, titular, comanda, pedido, quantidade, anotação, situação) values (?, ?, ?, ?, ?, ?, ?)",
-            [tabelaPedido.getDataHora(), tabelaPedido.getTitular(), tabelaPedido.getComanda(), tabelaPedido.getPedido(), tabelaPedido.getQuantidade(), tabelaPedido.getAnotacao(), tabelaPedido.getSituacao()]
+            "insert into bebida (nome, ingredientes, preco) values (?, ?, ?)",
+            [bebida.getNome(),bebida.getIngredientes(), bebida.getPreco()]
         );
-        tabelaPedido.setIdPedido(result.insertId);
-        return tabelaPedido;
+        bebida.getId(result.insertId);
+        return bebida;
     }
 };
 
-export default TabelaPedidosRepository;
+export default BebidaRepository;
