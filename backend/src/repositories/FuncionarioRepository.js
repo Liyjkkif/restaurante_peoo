@@ -10,9 +10,9 @@ const FuncionarioRepository = {
 
     async createProject(funcionario){
         const result = await connection.query("insert into funcionarios (nome, funcao, senha_sistema) values (?, ?, ?)",
-            [funcionario.nome, funcionario.funcao, funcionario.senha_sistema]
+            [funcionario.getNome(), funcionario.getFuncao(), funcionario.getSenha_sistema()]
         );
-        funcionario.id = result.insertId;
+        funcionario.getId(result.insertId);
         return funcionario;
     }
 }
