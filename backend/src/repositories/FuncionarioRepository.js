@@ -5,14 +5,14 @@ const FuncionarioRepository = {
 
     async findAll() {
         const rows = await connection.query("select * from funcionarios", []);
-        return rows.map(row => new Funcionario(row.id, row.nome, row.funcao, row.senha_sistema));
+        return rows.map(row => new Funcionario(row.id, row.nome, row.funcao, row.email, row.senha_sistema));
     },
 
     async createProject(funcionario){
-        const result = await connection.query("insert into funcionarios (nome, funcao, senha_sistema) values (?, ?, ?)",
-            [funcionario.getNome(), funcionario.getFuncao(), funcionario.getSenha_sistema()]
+        const result = await connection.query("insert into funcionarios (nome, funcao, email, senha_sistema) values (?, ?, ?)",
+            [funcionario._nome, funcionario._funcao, funcionario._email, funcionario._senha_sistema]
         );
-        funcionario.getId(result.insertId);
+        funcionario = result.insertId;
         return funcionario;
     }
 }
