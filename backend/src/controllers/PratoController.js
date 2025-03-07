@@ -1,20 +1,26 @@
-import Prato from "../models/Prato.js";
-import connection from "../config/dbConnect.js";
+import PratoRepository from "../repositories/PratoRepository.js";
 
-const PratoRepository = {
+const PratoController = {
 
-    async findAll() {
-        const rows = await connection.query("select * from pratos", []);
-        return rows.map(row => new Prato(row.id, row.nome, row.ingredientes, row.preco));
+    async getAll(req, res){
+        try {
+            const pratos = await PratoRepository.findAll();
+            res.json(pratos);
+        }catch(err){
+            res.status(500).json({error : "Erro na busca de pratos", err});
+        }
     },
 
-    async createProject(prato){
-        const result = await connection.query("insert into pratos (nome, ingredientes, preco) values (?, ?, ?)",
-            [prato.getNome(), prato.getIngredientes(), prato.getPreco()]
-        );
-        prato.getId(result.insertId);
-        return prato;
+    async create(req, res) {
+        const novoPrato = req.body;
+        try {
+            const PratoCriado = await PratoRepository.createProject(novoPrato);
+            res.status(201).json(PratoCriado);
+        }catch(err){
+            res.status(500).json({error : "Erro na criação de pratos", err});
+        }
     }
+
 }
 
-export default PratoRepository;
+export default PratoController;
