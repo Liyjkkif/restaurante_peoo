@@ -12,9 +12,8 @@ const RestauranteController = {
     },
 
     async create(req, res) {
-        const {nome} = req.body;
+        const novoRestaurante = req.body;
         try {
-            const novoRestaurante = {nome};
             const restauranteCriado = await RestauranteRepository.createProject(novoRestaurante);
             res.status(201).json(restauranteCriado);
         }catch(err){
