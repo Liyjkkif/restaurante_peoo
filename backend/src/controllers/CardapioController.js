@@ -12,11 +12,10 @@ const CardapioController = {
     },
 
     async create(req, res) {
-        const {nome} = req.body;
+        const novoCardapio = req.body;
         try {
-            const novoCardapio = {nome};
             const CardapioCriado = await CardapioRepository.createProject(novoCardapio);
-            res.status(201).json(cardapioCriado);
+            res.status(201).json(CardapioCriado);
         }catch(err){
             res.status(500).json({error : "Erro na criação de cardapios", err});
         }
