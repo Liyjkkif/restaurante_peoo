@@ -1,4 +1,4 @@
-import FuncionarioRepository from "../repositories/FuncionarioController.js";
+import FuncionarioRepository from "../repositories/FuncionarioRepository.js";
 
 const FuncionarioController = {
 
