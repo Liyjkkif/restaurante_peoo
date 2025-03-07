@@ -12,7 +12,7 @@ const BebidaController = {
     },
 
     async create(req, res) {
-        const novoRegistro = req.body;
+        const novoBebida = req.body;
         try {
             const BebidaCriada = await BebidaRepository.createProject(novaBebida);
             res.status(201).json(BebidaCriada);
