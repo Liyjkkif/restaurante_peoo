@@ -12,9 +12,8 @@ const FuncionarioController = {
     },
 
     async create(req, res) {
-        const {nome} = req.body;
+        const novoFuncionario = req.body;
         try {
-            const novoFuncionario = {nome};
             const funcionarioCriado = await FuncionarioRepository.createProject(novoFuncionario);
             res.status(201).json(funcionarioCriado);
         }catch(err){
