@@ -1,21 +1,26 @@
-import Bebida from "../models/Bebida.js";
-import connection from "../config/dbConnect.js";
+import BebidaRepository from "../repositories/BebidaRepository.js";
 
-const BebidaRepository = {
+const BebidaController = {
 
-    async findAll() {
-        const rows = await connection.query("select * from bebidas", []);
-        return rows.map(row => new Bebida(row.id, row.nome, row.ingredientes, row.preco));
+    async getAll(req, res){
+        try {
+            const bebidas = await BebidaRepository.findAll();
+            res.json(bebidas);
+        }catch(err){
+            res.status(500).json({error : "Erro na busca de bebidas", err});
+        }
     },
 
-    async createTabelaPedido(bebida) {
-        const result = await connection.query(
-            "insert into bebida (nome, ingredientes, preco) values (?, ?, ?)",
-            [bebida._nome, bebida._ingreidentes, bebida._preco]
-        );
-        bebida = result.insertId;
-        return bebida;
+    async create(req, res) {
+        const novaBebida = req.body;
+        try {
+            const BebidaCriada = await BebidaRepository.createProject(novaBebida);
+            res.status(201).json(BebidaCriada);
+        }catch(err){
+            res.status(500).json({error : "Erro na criação de bebidas", err});
+        }
     }
-};
 
-export default BebidaRepository;
+}
+
+export default BebidaController;
