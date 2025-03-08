@@ -4,16 +4,16 @@ import connection from "../config/dbConnect.js";
 const TabelaPedidosRepository = {
 
     async findAll() {
-        const rows = await connection.query("select * from TabelaPedidos", []);
-        return rows.map(row => new TabelaPedidos(row.id_pedido, row.data_hora, row.situacao, row.quantidade, row.anotacao));
+        const rows = await connection.query("select * from pedido", []);
+        return rows.map(row => new TabelaPedidos(row.id_pedido, row.data_hora, row.comanda, row.titular, row.pedido, row.quantidade, row.anotação, row.situação));
     },
 
     async createTabelaPedido(tabelaPedido) {
         const result = await connection.query(
-            "insert into TabelaPedidos (data_hora, situacao, quantidade, anotacao) values (?, ?, ?, ?)",
-            [tabelaPedido.getDataHora(), tabelaPedido.getSituacao(), tabelaPedido.getQuantidade(), tabelaPedido.getAnotacao()]
+            "insert into pedido (titular, comanda, pedido, quantidade, anotação) values (?, ?, ?, ?, ?)",
+            [tabelaPedido._titular, tabelaPedido._comanda, tabelaPedido._pedido, tabelaPedido._quantidade, tabelaPedido._anotacao]
         );
-        tabelaPedido.setIdPedido(result.insertId);
+        tabelaPedido = result.insertId;
         return tabelaPedido;
     }
 };
