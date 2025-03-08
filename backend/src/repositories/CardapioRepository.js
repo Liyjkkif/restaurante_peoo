@@ -1,26 +1,20 @@
-import CardapioRepository from "../repositories/CardapioRepository.js";
+import Cardapio from "../models/Cardapio.js";
+import connection from "../config/dbConnect.js";
 
-const CardapioController = {
+const CardapioRepository = {
 
-    async getAll(req, res){
-        try {
-            const cardapios = await CardapioRepository.findAll();
-            res.json(cardapios);
-        }catch(err){
-            res.status(500).json({error : "Erro na busca de cardapios", err});
-        }
+    async findAll() {
+        const rows = await connection.query("select * from cardapios", []);
+        return rows.map(row => new Cardapio(row.id, row.pratos_id, row.bebidas_id));
     },
 
-    async create(req, res) {
-        const novoCardapio = req.body;
-        try {
-            const CardapioCriado = await CardapioRepository.createProject(novoCardapio);
-            res.status(201).json(CardapioCriado);
-        }catch(err){
-            res.status(500).json({error : "Erro na criação de cardapios", err});
-        }
+    async createProject(cardapio){
+        const result = await connection.query("insert into cardapios (pratos_id, bebidas_id) values (?, ?)",
+            [cardapio.pratos_id, cardapio.bebidas_id]
+        );
+        cardapio = result.insertId;
+        return cardapio;
     }
-
 }
 
-export default CardapioController;
+export default CardapioRepository;
