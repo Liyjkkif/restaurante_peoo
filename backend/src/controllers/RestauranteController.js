@@ -1,21 +1,26 @@
-import Restaurante from "../models/Restaurante.js";
-import connection from "../config/dbConnect.js";
+import RestauranteRepository from "../repositories/RestauranteRepository.js";
 
-const RestauranteRepository = {
+const RestauranteController = {
 
-    async findAll() {
-        const rows = await connection.query("select * from restaurantes", []);
-        return rows.map(row => new Restaurante(row.id, row.nome, row.endereco, row.telefone));
+    async getAll(req, res){
+        try {
+            const restaurantes = await RestauranteRepository.findAll();
+            res.json(restaurantes);
+        }catch(err){
+            res.status(500).json({error : "Erro na busca de restaurantes", err});
+        }
     },
 
-    async createProject(restaurante){
-        const result = await connection.query("insert into restaurante (nome, endereco, telefone) values (?, ?, ?)",
-            [restaurante.getNome(), restaurante.getEndereco(), restaurante.getTelefone()]
-        );
-        restaurante.getId(result.insertId);
-        return restaurante;
+    async create(req, res) {
+        const novoRestaurante = req.body;
+        try {
+            const restauranteCriado = await RestauranteRepository.createProject(novoRestaurante);
+            res.status(201).json(restauranteCriado);
+        }catch(err){
+            res.status(500).json({error : "Erro na criação de restaurantes", err});
+        }
     }
+
 }
 
-export default RestauranteRepository;
-
+export default RestauranteController;
