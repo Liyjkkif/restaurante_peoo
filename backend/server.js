@@ -17,7 +17,7 @@ app.use("/pratos", PratoRouters);
 app.use("/bebidas", BebidaRouters);
 app.use("/cardapio", CardapioRouters);
 app.use("/funcionarios", FuncionarioRouters);
-app.use("/tabelapedidos", TabelaPedidosRouters);
+app.use("/pedidos", TabelaPedidosRouters);
 
 app.listen(PORT, () => {
     console.log("Servidor inicializado");
