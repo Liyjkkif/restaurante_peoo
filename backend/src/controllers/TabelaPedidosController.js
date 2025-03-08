@@ -1,21 +1,27 @@
-import TabelaPedidos from "../models/TabelaPedidos.js";
-import connection from "../config/dbConnect.js";
+import TabelaPedidosRepository from "../repositories/TabelaPedidosRepository.js";
 
-const TabelaPedidosRepository = {
+const TabelaPedidosController = {
 
-    async findAll() {
-        const rows = await connection.query("select * from pedido", []);
-        return rows.map(row => new TabelaPedidos(row.id_pedido, row.data_hora, row.comanda, row.titular, row.pedido, row.quantidade, row.anotação, row.situação));
+    async getAll(req, res){
+        try {
+            const tabelapedidos = await TabelaPedidosRepository.findAll();
+            res.json(tabelapedidos);
+        }catch(err){
+            res.status(500).json({error : "Erro na busca de registros de Pedidos", err});
+        }
     },
 
-    async createTabelaPedido(tabelaPedido) {
-        const result = await connection.query(
-            "insert into pedido (titular, comanda, pedido, quantidade, anotação) values (?, ?, ?, ?, ?)",
-            [tabelaPedido._titular, tabelaPedido._comanda, tabelaPedido._pedido, tabelaPedido._quantidade, tabelaPedido._anotacao]
-        );
-        tabelaPedido = result.insertId;
-        return tabelaPedido;
+    async create(req, res) {
+       const novoRegistro = req.body;
+        try {
+            const registroCriado = await TabelaPedidosRepository.createTabelaPedido(novoRegistro);
+            res.status(201).json(registroCriado);
+        }catch(err){
+            console.log('erro')
+            res.status(500).json({error : "Erro na criação de registros de Pedidos", err});
+        }
     }
-};
 
-export default TabelaPedidosRepository;
+}
+
+export default TabelaPedidosController;
