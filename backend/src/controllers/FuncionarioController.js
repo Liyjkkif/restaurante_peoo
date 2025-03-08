@@ -1,26 +1,20 @@
-import FuncionarioRepository from "../repositories/FuncionarioRepository.js";
+import Funcionario from "../models/Funcionario.js";
+import connection from "../config/dbConnect.js";
 
-const FuncionarioController = {
+const FuncionarioRepository = {
 
-    async getAll(req, res){
-        try {
-            const funcionarios = await FuncionarioRepository.findAll();
-            res.json(funcionarios);
-        }catch(err){
-            res.status(500).json({error : "Erro na busca de funcionarios", err});
-        }
+    async findAll() {
+        const rows = await connection.query("select * from funcionarios", []);
+        return rows.map(row => new Funcionario(row.id, row.nome, row.funcao, row.email, row.senha));
     },
 
-    async create(req, res) {
-        const novoFuncionario = req.body;
-        try {
-            const funcionarioCriado = await FuncionarioRepository.createProject(novoFuncionario);
-            res.status(201).json(funcionarioCriado);
-        }catch(err){
-            res.status(500).json({error : "Erro na criação de funcionarios", err});
-        }
+    async createProject(funcionario){
+        const result = await connection.query("insert into funcionarios (nome, funcao, email, senha_sistema) values (?, ?, ?, ?)",
+            [funcionario._nome, funcionario._funcao, funcionario._email, funcionario._senha_sistema]
+        );
+        funcionario = result.insertId;
+        return funcionario;
     }
-
 }
 
-export default FuncionarioController;
+export default FuncionarioRepository;
